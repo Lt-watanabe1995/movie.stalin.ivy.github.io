@@ -1,0 +1,284 @@
+/* ポップアップのスタイル */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 12, 12, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+ 
+#popup img {
+    max-width: 90%;
+    max-height: 90%;
+}
+ 
+/* 本ページ全体のスタイル */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ff0000;
+    color: white;
+}
+ 
+/* ヘッダー */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #cc0000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+ 
+header img {
+    max-height: 60px;
+    margin: 0 auto;
+}
+ 
+.hamburger-menu {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+ 
+/* ハンバーガーメニュー */
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+}
+ 
+.menu-icon div {
+    width: 100%;
+    height: 4px;
+    background-color: #ffcc00;
+}
+ 
+.menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #f08080;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px; /* 幅を広く設定 */
+}
+ 
+.menu a {
+    display: block;
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 5px 0;
+}
+ 
+.menu a:hover {
+    text-decoration: underline;
+}
+ 
+.hamburger-menu.active .menu {
+    display: block;
+}
+ 
+/* セクション共通スタイル */
+.special-section {
+    background-color: #f08080;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    max-width: 1200px; /* 必要に応じて調整 */
+    text-align: center;
+}
+ 
+/* セクションの画像 */
+.section-image {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+ 
+/* サブセクション */
+.subsection {
+    text-align: center;
+}
+ 
+.subsection-box {
+    background-color: #c0a080;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+}
+ 
+.subsection-box h3 {
+    font-family: "Hiragino Kaku Gothic Pro", "メイリオ", sans-serif;
+    font-size: 20px;
+    color: white;
+}
+ 
+.subsection-box p {
+    font-family: "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS P明朝", serif;
+    font-size: 16px;
+    color: black;
+}
+ 
+.subsection-box a {
+    color: yellow;
+    text-decoration: none;
+    font-size: 16px;
+}
+ 
+.subsection-box a:hover {
+    color: white;
+    cursor: pointer;
+}
+ 
+/* ページ全体の見出しボックス */
+.page-title-box {
+    background-color: #2d6444; /* ボックス背景色（ソ連をイメージした赤） */
+    color: #fff;              /* 文字色を白 */
+    text-align: center;       /* テキストを中央揃え */
+    padding: 20px;            /* 内側の余白 */
+    margin-bottom: 20px;      /* 下のセクションとの間隔 */
+    border-radius: 8px;       /* 角を丸くする */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ボックスに影をつける */
+}
+ 
+.page-title {
+    font-size: 2em;           /* 大きな文字サイズ */
+    font-weight: bold;        /* 太字 */
+    margin: 0;                /* デフォルトの余白を削除 */
+}
+ 
+/* スライダーのスタイル */
+.slider-kou,
+.slider-stalin {
+    position: relative; /* 子要素の絶対位置指定を親に対して相対的にする */
+    width: 500px;
+    height: 600px; /* 必要に応じて高さを調整 */
+    overflow: hidden; /* はみ出した部分を隠す */
+    margin: 0 auto; /* センター揃え */
+}
+ 
+.slider-kou-inner li,
+.slider-stalin-inner li {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* スライドの重なり順を設定 */
+}
+ 
+.slider-kou-inner li.show,
+.slider-stalin-inner li.show {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 2; /* 現在表示中のスライドを前面に */
+}
+ 
+.nav-kou,
+.nav-stalin {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+ 
+.nav-kou li,
+.nav-stalin li {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+ 
+.nav-kou li.current,
+.nav-stalin li.current {
+    background: #aaa;
+}
+ 
+/* スライダー内の矢印ボタンのスタイル */
+.slider-kou .arrow,
+.slider-stalin .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* 背景を透明に */
+    border: none; /* ボーダーを取り除く */
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 3;
+    padding: 0; /* 内側の余白を取り除く */
+}
+ 
+.slider-kou .arrow:hover,
+.slider-stalin .arrow:hover {
+    color: #ffcc00; /* ホバー時の色を変更 */
+}
+ 
+#arrow-prev-kou,
+#arrow-prev-stalin {
+    left: 10px;
+}
+ 
+#arrow-next-kou,
+#arrow-next-stalin {
+    right: 10px;
+}
+ 
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .menu {
+        width: 150px;
+    }
+ 
+    .subsection-box {
+        width: 90%;
+    }
+ 
+    .page-title {
+        font-size: 1.5em;
+    }
+ 
+    .arrow {
+        font-size: 1.5em;
+    }
+ 
+    .slider-kou,
+    .slider-stalin {
+        height: 250px; /* スマホ向けに高さを調整 */
+    }
+ 
+    iframe {
+        width: 100%;
+        height: auto;
+    }
+}
+ 
+/* スライダー内の画像を100%幅に設定 */
+.slider-kou-inner li img,
+.slider-stalin-inner li img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+ 
